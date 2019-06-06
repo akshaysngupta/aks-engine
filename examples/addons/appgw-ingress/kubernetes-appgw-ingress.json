@@ -1,0 +1,44 @@
+{
+  "apiVersion": "vlabs",
+  "properties": {
+    "orchestratorProfile": {
+      "orchestratorType": "Kubernetes",
+      "orchestratorRelease": "1.10",
+      "kubernetesConfig": {
+        "addons": [
+          {
+            "name": "appgw-ingress",
+            "enabled": true,
+            "config": {
+              "gateway-sku": "WAF_v2"
+            }
+          }
+        ]
+      }
+    },
+    "masterProfile": {
+      "count": 1,
+      "vmSize": "Standard_DS2_v2",
+      "DNSPrefix": ""
+    },
+    "agentPoolProfiles": [
+      {
+        "name": "agentpool",
+        "count": 1,
+        "vmSize": "Standard_DS2_v2",
+        "availabilityProfile": "VirtualMachineScaleSets",
+        "storageProfile": "ManagedDisks"
+      }
+    ],
+    "linuxProfile": {
+      "adminUsername": "azureuser",
+      "ssh": {
+        "publicKeys": [
+          {
+            "keyData": ""
+          }
+        ]
+      }
+    }
+  }
+}

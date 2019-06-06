@@ -466,6 +466,13 @@ func getK8sMasterVars(cs *api.ContainerService) (map[string]interface{}, error) 
 		masterVars["clusterKeyVaultName"] = ""
 	}
 
+	if cs.Properties.OrchestratorProfile.KubernetesConfig.IsAddonEnabled(AppGwIngressAddonName) {
+		masterVars["appGwName"] = "[concat(parameters('orchestratorName'), '-appgw-', parameters('nameSuffix'))]"
+		masterVars["appGwSubnetName"] = "appgw-subnet"
+		masterVars["appGwPublicIPAddressName"] = "[concat(parameters('orchestratorName'), '-appgw-ip-', parameters('nameSuffix'))]"
+		masterVars["applicationGatewayID"] = "[resourceId('Microsoft.Network/applicationGateways',variables('appGwName'))]"
+	}
+
 	return masterVars, nil
 }
 

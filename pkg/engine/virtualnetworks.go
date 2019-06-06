@@ -57,6 +57,18 @@ func CreateVirtualNetwork(cs *api.ContainerService) VirtualNetworkARM {
 		},
 	}
 
+	if cs.Properties.OrchestratorProfile.KubernetesConfig.IsAddonEnabled(AppGwIngressAddonName) {
+		subnetAppGw := network.Subnet{
+			Name: to.StringPtr("[variables('appGwSubnetName')]"),
+			SubnetPropertiesFormat: &network.SubnetPropertiesFormat{
+				AddressPrefix: to.StringPtr("[parameters('appGwSubnet')]"),
+			},
+		}
+
+		subnets := append(*virtualNetwork.VirtualNetworkPropertiesFormat.Subnets, subnetAppGw)
+		virtualNetwork.VirtualNetworkPropertiesFormat.Subnets = &subnets
+	}
+
 	return VirtualNetworkARM{
 		ARMResource:    armResource,
 		VirtualNetwork: virtualNetwork,
@@ -126,6 +138,18 @@ func createVirtualNetworkVMSS(cs *api.ContainerService) VirtualNetworkARM {
 				subnetAgent,
 			},
 		},
+	}
+
+	if true {
+		subnetAppGw := network.Subnet{
+			Name: to.StringPtr("[variables('appGwSubnetName')]"),
+			SubnetPropertiesFormat: &network.SubnetPropertiesFormat{
+				AddressPrefix: to.StringPtr("[parameters('appGwSubnet')]"),
+			},
+		}
+
+		subnets := append(*virtualNetwork.VirtualNetworkPropertiesFormat.Subnets, subnetAppGw)
+		virtualNetwork.VirtualNetworkPropertiesFormat.Subnets = &subnets
 	}
 
 	return VirtualNetworkARM{

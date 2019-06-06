@@ -73,7 +73,6 @@ func createKubernetesMasterResourcesVMAS(cs *api.ContainerService) []interface{}
 			jumpboxPublicIP := createJumpboxPublicIPAddress()
 			masterResources = append(masterResources, jumpboxNSG, jumpboxNIC, jumpboxPublicIP)
 		}
-
 	}
 
 	if p.MasterProfile.HasMultipleNodes() {

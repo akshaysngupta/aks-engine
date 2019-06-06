@@ -132,6 +132,8 @@ const (
 	DefaultAADPodIdentityAddonEnabled = false
 	// DefaultACIConnectorAddonEnabled determines the aks-engine provided default for enabling aci connector addon
 	DefaultACIConnectorAddonEnabled = false
+	// DefaultAppGwIngressAddonEnabled determines the aks-engine provided default for enabling appgw ingress addon
+	DefaultAppGwIngressAddonEnabled = false
 	// DefaultClusterAutoscalerAddonEnabled determines the aks-engine provided default for enabling cluster autoscaler addon
 	DefaultClusterAutoscalerAddonEnabled = false
 	// DefaultBlobfuseFlexVolumeAddonEnabled determines the aks-engine provided default for enabling blobfuse flexvolume addon
@@ -176,6 +178,8 @@ const (
 	AADPodIdentityAddonName = "aad-pod-identity"
 	// ACIConnectorAddonName is the name of the aci-connector addon deployment
 	ACIConnectorAddonName = "aci-connector"
+	// AppGwIngressAddonName appgw addon
+	AppGwIngressAddonName = "appgw-ingress"
 	// ClusterAutoscalerAddonName is the name of the cluster autoscaler addon deployment
 	ClusterAutoscalerAddonName = "cluster-autoscaler"
 	// BlobfuseFlexVolumeAddonName is the name of the blobfuse flexvolume addon
@@ -331,6 +335,7 @@ const (
 	// DefaultKubernetesSubnet specifies the default subnet used for all masters, agents and pods
 	// when VNET integration is enabled.
 	DefaultKubernetesSubnet = "10.240.0.0/12"
+	DefaultAppGwSubnet      = "10.208.0.0/12"
 	// DefaultVNETCIDR is the default CIDR block for the VNET
 	DefaultVNETCIDR = "10.0.0.0/8"
 	// DefaultKubernetesMaxPods is the maximum number of pods to run on a node.

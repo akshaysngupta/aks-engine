@@ -73,7 +73,11 @@ func GenerateARMResources(cs *api.ContainerService) []interface{} {
 		}
 
 		armResources = append(armResources, masterResources...)
+	}
 
+	if cs.Properties.OrchestratorProfile.KubernetesConfig.IsAddonEnabled(AppGwIngressAddonName) {
+		armResources = append(armResources, createAppGwPublicIPAddress())
+		armResources = append(armResources, createApplicationGateway(cs.Properties))
 	}
 
 	return armResources
