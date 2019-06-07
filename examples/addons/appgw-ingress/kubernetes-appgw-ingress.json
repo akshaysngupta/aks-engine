@@ -10,7 +10,9 @@
             "name": "appgw-ingress",
             "enabled": true,
             "config": {
-              "gateway-sku": "WAF_v2"
+              "appgw-sku": "WAF_v2",
+              "appgw-autoscale": true,
+              "watch-namespace": "ns1,ns2"
             }
           }
         ]

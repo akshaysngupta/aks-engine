@@ -140,7 +140,7 @@ func createVirtualNetworkVMSS(cs *api.ContainerService) VirtualNetworkARM {
 		},
 	}
 
-	if true {
+	if cs.Properties.OrchestratorProfile.KubernetesConfig.IsAddonEnabled(AppGwIngressAddonName) {
 		subnetAppGw := network.Subnet{
 			Name: to.StringPtr("[variables('appGwSubnetName')]"),
 			SubnetPropertiesFormat: &network.SubnetPropertiesFormat{
